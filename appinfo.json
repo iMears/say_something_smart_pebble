@@ -1,8 +1,8 @@
 {
   "uuid": "133215f0-cf20-4c05-997b-3c9be5a64e5b",
-  "shortName": "Pebble.js",
-  "longName": "Pebble.js",
-  "companyName": "Meiguro",
+  "shortName": "Smart",
+  "longName": "Smart",
+  "companyName": "",
   "versionCode": 1,
   "versionLabel": "0.4",
   "capabilities": [
@@ -18,7 +18,7 @@
         "menuIcon": true,
         "type": "png",
         "name": "IMAGE_MENU_ICON",
-        "file": "images/menu_icon.png"
+        "file": "images/menu_icon_2.png"
       },
       {
         "type": "png",

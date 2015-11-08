@@ -1,39 +1,30 @@
 var UI = require('ui');
 var ajax = require('ajax');
+var Vibe = require('ui/vibe');
 
-// create a Card with title and subtitle
 var card = new UI.Card({
-  title: 'Say Something Smart!',
-  subtitle: 'Loading...'
+  body: 'Loading...'
 });
 
-// display the Card
 card.show();
+callApi();
 
-// construct URL
-var URL = 'https://say-something-smart.herokuapp.com';
+card.on('click', function(e) {
+  callApi();
+});
 
-// make the request
-ajax({
-    url: URL,
-    type: 'json'
-  },
-  function(data) {
-    console.log('Successfully fetched data!');
-
-    // extract data
-    var message = data.message;
-
-    // show to user
-    card.title('');
-    card.subtitle("Say: ");
-    card.body(message);
-  },
-  function(error) {
-    console.log('Failed fetching weather data: ' + error);
-
-    // show error to user
-    card.subtitle("Error!");
-    card.body(error);
-  }
-);
+function callApi() {
+  ajax({
+      url: 'https://say-something-smart.herokuapp.com',
+      type: 'json'
+    },
+    function(data) {
+      card.body(data.message);
+      Vibe.vibrate('short');
+    },
+    function(error) {
+      card.subtitle("Error!");
+      card.body(error);
+    }
+  );
+}
